@@ -1,11 +1,11 @@
-﻿namespace Bookify.Domain.Apartments;
+﻿namespace Bookify.Domain.Shared;
 
 public record Currency(string Code)
 {
     public static readonly Currency Usd = new("USD");
     public static readonly Currency Eur = new("EUR");
     public static readonly Currency Mxn = new("MXN");
-    
+
     internal static readonly Currency None = new(string.Empty);
 
     public string? Code { get; init; } = Code;

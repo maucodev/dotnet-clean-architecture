@@ -20,11 +20,13 @@ public sealed class User : Entity
 
     public static User Create(FirstName firstName, LastName lastName, Email email)
     {
-        var userId = Guid.NewGuid();
+        var user = new User(
+            id: Guid.NewGuid(), 
+            firstName, 
+            lastName, 
+            email);
 
-        var user = new User(userId, firstName, lastName, email);
-
-        user.RaiseDomainEvent(new UserCreatedDomainEvent(userId));
+        user.RaiseDomainEvent(new UserCreatedDomainEvent(user.Id));
 
         return user;
     }
