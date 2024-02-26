@@ -6,7 +6,7 @@ public sealed record Rating
 {
     public static readonly Error Invalid = new(
         Code: "Rating.Invalid", 
-        Name: "The rating is invalid");
+        Description: "The rating is invalid");
 
     private Rating(int value) => Value = value;
 

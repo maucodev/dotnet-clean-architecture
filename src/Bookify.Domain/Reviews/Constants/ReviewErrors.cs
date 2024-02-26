@@ -6,5 +6,5 @@ public static class ReviewErrors
 {
     public static readonly Error NotEligible = new(
         Code: "Review.NotEligible",
-        Name: "The review is not eligible because the booking is not yet completed");
+        Description: "The review is not eligible because the booking is not yet completed");
 }
