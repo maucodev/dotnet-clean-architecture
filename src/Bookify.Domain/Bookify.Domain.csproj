@@ -12,6 +12,7 @@
 
   <ItemGroup>
     <Folder Include="Apartments\Repositories\" />
+    <Folder Include="Reviews\Entities\" />
     <Folder Include="Users\Events\" />
   </ItemGroup>
 
