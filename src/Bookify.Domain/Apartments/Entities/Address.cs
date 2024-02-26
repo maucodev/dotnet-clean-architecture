@@ -1,4 +1,4 @@
-﻿namespace Bookify.Domain.Apartments;
+﻿namespace Bookify.Domain.Apartments.Entities;
 
 public record Address(
     string Country,

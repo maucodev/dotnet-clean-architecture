@@ -1,9 +1,11 @@
 ﻿using Bookify.Domain.Abstractions;
-using Bookify.Domain.Apartments;
+using Bookify.Domain.Apartments.Entities;
+using Bookify.Domain.Bookings.Constants;
 using Bookify.Domain.Bookings.Events;
+using Bookify.Domain.Bookings.Services;
 using Bookify.Domain.Shared;
 
-namespace Bookify.Domain.Bookings;
+namespace Bookify.Domain.Bookings.Entities;
 
 public sealed class Booking : Entity
 {

@@ -1,7 +1,9 @@
-﻿using Bookify.Domain.Apartments;
+﻿using Bookify.Domain.Apartments.Constants;
+using Bookify.Domain.Apartments.Entities;
+using Bookify.Domain.Bookings.Entities;
 using Bookify.Domain.Shared;
 
-namespace Bookify.Domain.Bookings;
+namespace Bookify.Domain.Bookings.Services;
 
 public class PricingService
 {

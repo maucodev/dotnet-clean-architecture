@@ -1,7 +1,8 @@
 ﻿using Bookify.Domain.Abstractions;
+using Bookify.Domain.Apartments.Constants;
 using Bookify.Domain.Shared;
 
-namespace Bookify.Domain.Apartments;
+namespace Bookify.Domain.Apartments.Entities;
 
 public sealed class Apartment(
     Guid id,
