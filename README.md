@@ -9,7 +9,10 @@ This project is based on the [Pragmatic Clean Architecture course by Milan Jovan
 ## Structure
 The solution is divided into some main projects, each representing a fundamental layer:
 
-1. **Domain**: This project contains implementation for the domain layer. It includes concepts like Entities, Value objects, Domain events, Domain services, and so one.
+1. **Domain**: This project contains the implementation for the domain layer. It includes concepts like Entities, Value objects, Domain events, Domain services, and so one.
+
+## Requeriments
+To get started with this solution, intall [Docker](https://www.docker.com/products/docker-desktop/).
 
 ## Getting Started
 To get started with this solution, clone the repository and open the solution file in Visual Studio.
