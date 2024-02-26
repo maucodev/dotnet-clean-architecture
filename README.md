@@ -10,6 +10,7 @@ This project is based on the [Pragmatic Clean Architecture course by Milan Jovan
 The solution is divided into some main projects, each representing a fundamental layer:
 
 1. **Domain**: This project contains the implementation for the domain layer. It includes concepts like Entities, Value objects, Domain events, Domain services, and so one.
+2. **Application**: This project contains the implementation for the application layer. It includes concepts like CQRS pattern and MediatR, Cross-cutting concerns, Dependency inyection configuration, and so one.
 
 ## Requeriments
 To get started with this solution, intall [Docker](https://www.docker.com/products/docker-desktop/).
