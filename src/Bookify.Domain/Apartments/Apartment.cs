@@ -23,7 +23,7 @@ public sealed class Apartment(
 
     public Money CleaningFee { get; private set; } = cleaningFee;
 
-    public DateTime? LastBookedOnUtc { get; private set; }
+    public DateTime? LastBookedOnUtc { get; internal set; }
 
     public List<Amenity> Amenities { get; private set; } = amenities;
 }
