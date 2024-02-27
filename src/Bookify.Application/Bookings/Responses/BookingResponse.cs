@@ -1,4 +1,4 @@
-﻿namespace Bookify.Application.Bookings.GetBooking;
+﻿namespace Bookify.Application.Bookings.Responses;
 
 public sealed class BookingResponse
 {
