@@ -58,7 +58,8 @@ internal sealed class SearchApartmentQueryHandler(
             {
                 apartment.Address = address;
                 return apartment;
-            }, new
+            },
+            param: new
             {
                 request.StartDate,
                 request.EndDate,
