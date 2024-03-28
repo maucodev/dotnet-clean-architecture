@@ -10,7 +10,7 @@ namespace Bookify.Presentation.Controllers.Bookings;
 [Route("api/bookings")]
 public class BookingsController(ISender sender) : ControllerBase
 {
-    [HttpGet("{id}")]
+    [HttpGet("{id:guid}")]
     public async Task<IActionResult> GetBooking(Guid id, CancellationToken cancellationToken)
     {
         var query = new GetBookingQuery(id);
