@@ -15,12 +15,12 @@
   </ItemGroup>
 
   <ItemGroup>
-    <Folder Include="Controllers\" />
+    <ProjectReference Include="..\Bookify.Application\Bookify.Application.csproj" />
+    <ProjectReference Include="..\Bookify.Infrastructure\Bookify.Infrastructure.csproj" />
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\Bookify.Application\Bookify.Application.csproj" />
-    <ProjectReference Include="..\Bookify.Infrastructure\Bookify.Infrastructure.csproj" />
+    <Folder Include="Controllers\Bookings\Requests\" />
   </ItemGroup>
 
 </Project>
