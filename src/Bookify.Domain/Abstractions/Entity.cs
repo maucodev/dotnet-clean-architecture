@@ -6,6 +6,10 @@ public abstract class Entity(Guid id)
 
     public Guid Id { get; init; } = id;
 
+    protected Entity() : this(Guid.Empty)
+    {
+    }
+
     public IReadOnlyList<IDomainEvent> GetDomainEvents()
     {
         return _domainEvents;

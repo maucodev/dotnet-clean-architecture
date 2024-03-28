@@ -13,15 +13,15 @@ internal sealed class ApartmentConfiguration : IEntityTypeConfiguration<Apartmen
 
         builder.HasKey(apartment => apartment.Id);
 
-        builder.HasOne(apartment => apartment.Address);
+        builder.OwnsOne(apartment => apartment.Address);
 
         builder.Property(apartment => apartment.Name)
-            .HasMaxLength(2000)
-            .HasConversion(name => name.Value, value => new Name(value));
+            .HasMaxLength(200)
+            .HasConversion(name => name!.Value, value => new Name(value));
 
         builder.Property(apartment => apartment.Description)
             .HasMaxLength(2000)
-            .HasConversion(description => description.Value, value => new Description(value));
+            .HasConversion(description => description!.Value, value => new Description(value));
 
         builder.OwnsOne(apartment => apartment.Price, priceBuilder =>
         {
