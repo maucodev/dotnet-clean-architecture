@@ -3,14 +3,16 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 17
 VisualStudioVersion = 17.9.34616.47
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Bookify.Domain", "src\Bookify.Domain\Bookify.Domain.csproj", "{129DD1C2-D4EC-4B54-AC13-5301AB430BB4}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Bookify.Domain", "src\Bookify.Domain\Bookify.Domain.csproj", "{129DD1C2-D4EC-4B54-AC13-5301AB430BB4}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{F471D9CF-651C-4AEC-8B55-EFB681C17283}"
 	ProjectSection(SolutionItems) = preProject
 		README.md = README.md
 	EndProjectSection
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Bookify.Application", "src\Bookify.Application\Bookify.Application.csproj", "{2FB98A7D-0FBC-4F51-9675-E5745A7B9434}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Bookify.Application", "src\Bookify.Application\Bookify.Application.csproj", "{2FB98A7D-0FBC-4F51-9675-E5745A7B9434}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Bookify.Infrastructure", "src\Bookify.Infrastructure\Bookify.Infrastructure.csproj", "{FC396683-511E-4534-9486-B3B225C12782}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -26,6 +28,10 @@ Global
 		{2FB98A7D-0FBC-4F51-9675-E5745A7B9434}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{2FB98A7D-0FBC-4F51-9675-E5745A7B9434}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{2FB98A7D-0FBC-4F51-9675-E5745A7B9434}.Release|Any CPU.Build.0 = Release|Any CPU
+		{FC396683-511E-4534-9486-B3B225C12782}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{FC396683-511E-4534-9486-B3B225C12782}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{FC396683-511E-4534-9486-B3B225C12782}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{FC396683-511E-4534-9486-B3B225C12782}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
