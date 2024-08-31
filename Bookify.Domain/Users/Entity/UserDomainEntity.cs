@@ -1,10 +1,9 @@
 ﻿using System;
-using Bookify.Domain.Abstractions;
 using Bookify.Domain.Users.Events;
 
-namespace Bookify.Domain.Users;
+namespace Bookify.Domain.Users.Entity;
 
-public sealed class User : Entity
+public sealed class User : Abstractions.Entity
 {
     private User(
         Guid id,

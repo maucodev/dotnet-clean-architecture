@@ -1,10 +1,9 @@
 ﻿using System;
 using System.Collections.Generic;
-using Bookify.Domain.Abstractions;
 
-namespace Bookify.Domain.Apartments;
+namespace Bookify.Domain.Apartments.Entity;
 
-public sealed class Apartment : Entity
+public sealed class Apartment : Abstractions.Entity
 {
     private Apartment(
         Guid id,

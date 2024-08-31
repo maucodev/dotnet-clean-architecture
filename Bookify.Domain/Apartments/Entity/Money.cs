@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace Bookify.Domain.Apartments;
+namespace Bookify.Domain.Apartments.Entity;
 
 public record Money(decimal Amount, Currency Currency)
 {
