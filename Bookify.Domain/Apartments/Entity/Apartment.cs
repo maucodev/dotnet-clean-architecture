@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using Bookify.Domain.Shared;
 
 namespace Bookify.Domain.Apartments.Entity;
 
@@ -32,9 +33,9 @@ public sealed class Apartment : Abstractions.Entity
 
     public Money CleaningFee { get; private set; }
 
-    public DateTime? LastBooked { get; private set; }
+    public DateTime? LastBooked { get; internal set; }
 
-    public List<Amenity> Amenities { get; private set; } = [];
+    public List<Amenity> Amenities { get; private set; }
 
     public static Apartment Create(
         Name name,

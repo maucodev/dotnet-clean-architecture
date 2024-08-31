@@ -9,6 +9,7 @@
 	</ItemGroup>
 
 	<ItemGroup>
+	  <Folder Include="Bookings\Entity\" />
 	  <Folder Include="Users\Repository\" />
 	</ItemGroup>
 
