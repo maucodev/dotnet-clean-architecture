@@ -1,4 +1,5 @@
 ﻿using System;
+using Bookify.Domain.Abstractions;
 using Bookify.Domain.Apartments.Entity;
 using Bookify.Domain.Bookings.Events;
 using Bookify.Domain.Bookings.Services;
@@ -57,7 +58,7 @@ public sealed class Booking : Abstractions.Entity
 
     public DateTime? Cancelled { get; private set; }
 
-    public static Booking Reserve(
+    public static Result Reserve(
         Apartment apartment,
         Guid userId,
         DateRange duration,
@@ -84,6 +85,77 @@ public sealed class Booking : Abstractions.Entity
 
         apartment.LastBooked = reserveDateTime;
 
-        return booking;
+        return Result.Success(booking);
+    }
+
+    public Result Confirm(DateTime confirmedDateTime)
+    {
+        if (Status != BookingStatus.Reserved)
+        {
+            return Result.Failure(BookingErrors.NotReserved);
+        }
+
+        Status = BookingStatus.Confirmed;
+
+        Confirmed = confirmedDateTime;
+
+        RaiseDomainEvent(new BookingConfirmedDomainEvent(Id));
+
+        return Result.Success();
+    }
+
+    public Result Reject(DateTime rejectedDateTime)
+    {
+        if (Status != BookingStatus.Reserved)
+        {
+            return Result.Failure(BookingErrors.NotReserved);
+        }
+
+        Status = BookingStatus.Rejected;
+
+        Rejected = rejectedDateTime;
+
+        RaiseDomainEvent(new BookingRejectedDomainEvent(Id));
+
+        return Result.Success();
+    }
+
+    public Result Complete(DateTime completedDateTime)
+    {
+        if (Status != BookingStatus.Confirmed)
+        {
+            return Result.Failure(BookingErrors.NotConfirmed);
+        }
+
+        Status = BookingStatus.Completed;
+
+        Completed = completedDateTime;
+
+        RaiseDomainEvent(new BookingCompletedDomainEvent(Id));
+
+        return Result.Success();
+    }
+
+    public Result Cancel(DateTime cancelledDateTime)
+    {
+        if (Status != BookingStatus.Confirmed)
+        {
+            return Result.Failure(BookingErrors.NotConfirmed);
+        }
+
+        var currentDate = DateOnly.FromDateTime(cancelledDateTime);
+
+        if (currentDate > Duration.Start)
+        {
+            return Result.Failure(BookingErrors.AlreadyStarted);
+        }
+
+        Status = BookingStatus.Cancelled;
+
+        Cancelled = cancelledDateTime;
+
+        RaiseDomainEvent(new BookingCancelledDomainEvent(Id));
+
+        return Result.Success();
     }
 }
