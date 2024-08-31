@@ -6,7 +6,7 @@ namespace Bookify.Domain.Apartments;
 
 public sealed class Apartment : Entity
 {
-    public Apartment(
+    private Apartment(
         Guid id,
         Name name,
         Description description,
@@ -36,4 +36,26 @@ public sealed class Apartment : Entity
     public DateTime? LastBooked { get; private set; }
 
     public List<Amenity> Amenities { get; private set; } = [];
+
+    public static Apartment Create(
+        Name name,
+        Description description,
+        Address address,
+        Money price,
+        Money cleaningFee,
+        List<Amenity> amenities)
+    {
+        var apartmentId = Guid.NewGuid();
+
+        var apartment = new Apartment(
+            apartmentId,
+            name,
+            description,
+            address,
+            price,
+            cleaningFee,
+            amenities);
+
+        return apartment;
+    }
 }
