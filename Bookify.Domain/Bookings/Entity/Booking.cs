@@ -58,7 +58,7 @@ public sealed class Booking : Abstractions.Entity
 
     public DateTime? Cancelled { get; private set; }
 
-    public static Result Reserve(
+    public static Result<Booking> Reserve(
         Apartment apartment,
         Guid userId,
         DateRange duration,
@@ -85,7 +85,7 @@ public sealed class Booking : Abstractions.Entity
 
         apartment.LastBooked = reserveDateTime;
 
-        return Result.Success(booking);
+        return booking;
     }
 
     public Result Confirm(DateTime confirmedDateTime)

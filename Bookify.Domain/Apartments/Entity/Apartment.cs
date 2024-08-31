@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using Bookify.Domain.Abstractions;
 using Bookify.Domain.Shared;
 
 namespace Bookify.Domain.Apartments.Entity;
@@ -37,7 +38,7 @@ public sealed class Apartment : Abstractions.Entity
 
     public List<Amenity> Amenities { get; private set; }
 
-    public static Apartment Create(
+    public static Result<Apartment> Create(
         Name name,
         Description description,
         Address address,

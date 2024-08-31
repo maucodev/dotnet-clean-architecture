@@ -1,4 +1,5 @@
 ﻿using System;
+using Bookify.Domain.Abstractions;
 using Bookify.Domain.Users.Events;
 
 namespace Bookify.Domain.Users.Entity;
@@ -22,7 +23,7 @@ public sealed class User : Abstractions.Entity
 
     public Email Email { get; private set; }
 
-    public static User Create(FirstName firstName, LastName lastName, Email email)
+    public static Result<User> Create(FirstName firstName, LastName lastName, Email email)
     {
         var userId = Guid.NewGuid();
 
