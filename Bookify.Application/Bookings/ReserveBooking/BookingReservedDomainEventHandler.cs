@@ -16,10 +16,11 @@ internal sealed class BookingReservedDomainEventHandler : INotificationHandler<B
 
     public BookingReservedDomainEventHandler(
         IBookingRepository bookingRepository,
-        IUserRepository userRepository)
+        IUserRepository userRepository, IEmailService emailService)
     {
         _bookingRepository = bookingRepository;
         _userRepository = userRepository;
+        _emailService = emailService;
     }
 
     public async Task Handle(BookingReservedDomainEvent notification, CancellationToken cancellationToken)
