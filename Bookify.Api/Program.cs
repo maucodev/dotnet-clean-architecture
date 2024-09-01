@@ -34,6 +34,8 @@ public static class Program
 
         app.UseHttpsRedirection();
 
+        app.UseCustomExceptionHandler();
+
         app.MapControllers();
 
         app.Run();
