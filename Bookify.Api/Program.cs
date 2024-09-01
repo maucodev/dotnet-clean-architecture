@@ -1,3 +1,4 @@
+using Bookify.Api.Extensions;
 using Bookify.Application;
 using Bookify.Infrastructure;
 
@@ -25,6 +26,10 @@ public static class Program
         {
             app.UseSwagger();
             app.UseSwaggerUI();
+
+            app.ApplyMigrations();
+
+            app.SeedData();
         }
 
         app.UseHttpsRedirection();

@@ -16,5 +16,7 @@ services:
         - POSTGRES_PASSWORD=postgres
     volumes:
         - ./.containers/database:/var/lib/postgresql/data
+        - ./pg_hba.conf:/var/lib/foo/pg_hba.conf
+    command: ["postgres", "-c", "hba_file=/var/lib/foo/pg_hba.conf"]
     ports:
         - 5432:5432

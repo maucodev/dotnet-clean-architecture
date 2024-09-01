@@ -7,6 +7,10 @@ namespace Bookify.Domain.Reviews.Entity;
 
 public sealed class Review : Abstractions.Entity
 {
+    private Review()
+    {
+    }
+
     private Review(
         Guid id,
         Guid apartmentId,

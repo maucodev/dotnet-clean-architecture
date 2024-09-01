@@ -6,6 +6,10 @@ namespace Bookify.Domain.Users.Entity;
 
 public sealed class User : Abstractions.Entity
 {
+    private User()
+    {
+    }
+
     private User(
         Guid id,
         FirstName firstName,

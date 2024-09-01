@@ -7,6 +7,10 @@ namespace Bookify.Domain.Apartments.Entity;
 
 public sealed class Apartment : Abstractions.Entity
 {
+    private Apartment()
+    {
+    }
+
     private Apartment(
         Guid id,
         Name name,

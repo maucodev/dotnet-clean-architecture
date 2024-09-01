@@ -9,6 +9,10 @@ namespace Bookify.Domain.Bookings.Entity;
 
 public sealed class Booking : Abstractions.Entity
 {
+    private Booking()
+    {
+    }
+
     private Booking(
         Guid id,
         Guid apartmentId,
