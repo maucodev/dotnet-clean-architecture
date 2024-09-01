@@ -12,4 +12,9 @@
 	  <ProjectReference Include="..\Bookify.Domain\Bookify.Domain.csproj" />
 	</ItemGroup>
 
+	<ItemGroup>
+	  <Folder Include="Abstractions\Clock\" />
+	  <Folder Include="Bookings\ReserveBooking\" />
+	</ItemGroup>
+
 </Project>
