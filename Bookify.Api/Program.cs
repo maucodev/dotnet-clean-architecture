@@ -36,6 +36,10 @@ public static class Program
 
         app.UseCustomExceptionHandler();
 
+        app.UseAuthentication();
+
+        app.UseAuthorization();
+
         app.MapControllers();
 
         app.Run();
