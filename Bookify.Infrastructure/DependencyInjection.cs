@@ -29,7 +29,7 @@ namespace Bookify.Infrastructure;
 
 public static class DependencyInjection
 {
-    public static IServiceCollection AddInfrastructureLayer(this IServiceCollection services, IConfiguration configuration)
+    public static void AddInfrastructureLayer(this IServiceCollection services, IConfiguration configuration)
     {
         services.AddTransient<IDateTimeProvider, DateTimeProvider>();
         services.AddTransient<IEmailService, EmailService>();
@@ -39,8 +39,6 @@ public static class DependencyInjection
         AddAuthentication(services, configuration);
 
         AddAuthorization(services);
-
-        return services;
     }
 
     private static void AddPersistence(IServiceCollection services, IConfiguration configuration)
