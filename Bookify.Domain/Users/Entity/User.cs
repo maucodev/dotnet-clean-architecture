@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using Bookify.Domain.Abstractions;
+using Bookify.Domain.Roles.Entity;
 using Bookify.Domain.Users.Events;
 
 namespace Bookify.Domain.Users.Entity;

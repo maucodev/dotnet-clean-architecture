@@ -1,4 +1,5 @@
-﻿using Bookify.Domain.Users.Entity;
+﻿using Bookify.Domain.Roles.Entity;
+using Bookify.Domain.Users.Entity;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Metadata.Builders;
 

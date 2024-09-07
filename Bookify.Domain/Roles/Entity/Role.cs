@@ -1,6 +1,7 @@
 ﻿using System.Collections.Generic;
+using Bookify.Domain.Users.Entity;
 
-namespace Bookify.Domain.Users.Entity;
+namespace Bookify.Domain.Roles.Entity;
 
 public sealed class Role
 {
