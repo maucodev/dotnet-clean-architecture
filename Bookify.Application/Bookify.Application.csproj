@@ -17,6 +17,7 @@
 
 	<ItemGroup>
 		<Folder Include="Abstractions\Clock\" />
+		<Folder Include="Users\GetLoggedInUser\" />
 	</ItemGroup>
 
 </Project>
