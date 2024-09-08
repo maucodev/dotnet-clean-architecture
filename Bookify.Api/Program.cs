@@ -1,6 +1,7 @@
 using Bookify.Api.Extensions;
 using Bookify.Application;
 using Bookify.Infrastructure;
+using Serilog;
 
 namespace Bookify.Api;
 
@@ -9,6 +10,11 @@ public static class Program
     public static void Main(string[] args)
     {
         var builder = WebApplication.CreateBuilder(args);
+
+        builder.Host.UseSerilog((context, configuration) =>
+        {
+            configuration.ReadFrom.Configuration(context.Configuration);
+        });
 
         builder.Services.AddControllers();
 
@@ -33,6 +39,10 @@ public static class Program
         }
 
         app.UseHttpsRedirection();
+
+        app.USeRequestContextLogging();
+
+        app.UseSerilogRequestLogging();
 
         app.UseCustomExceptionHandler();
 
