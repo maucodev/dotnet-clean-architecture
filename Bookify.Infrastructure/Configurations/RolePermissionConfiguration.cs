@@ -1,5 +1,5 @@
-﻿using Bookify.Domain.Roles.Entity;
-using Bookify.Domain.Users.Entity;
+﻿using Bookify.Domain.Permissions.Entity;
+using Bookify.Domain.Roles.Entity;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Metadata.Builders;
 
@@ -9,14 +9,14 @@ public sealed class RolePermissionConfiguration : IEntityTypeConfiguration<RoleP
 {
     public void Configure(EntityTypeBuilder<RolePermission> builder)
     {
-        builder.ToTable("role_permission");
+        builder.ToTable("role_permissions");
 
         builder.HasKey(rolePermission => new { rolePermission.RoleId, rolePermission.PermissionId });
 
         builder.HasData(new RolePermission
         {
             RoleId = Role.Registered.Id,
-            PermissionId = Permission.UsersRead.Id
+            PermissionId = Permission.ApartmentsRead.Id
         });
     }
 }

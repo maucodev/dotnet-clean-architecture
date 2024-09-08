@@ -1,4 +1,6 @@
-﻿using Bookify.Application.Apartments.SearchApartments;
+﻿using Bookify.Api.Authorization;
+using Bookify.Application.Apartments.SearchApartments;
+using Bookify.Infrastructure.Authorization;
 using MediatR;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
@@ -18,6 +20,7 @@ public class ApartmentsController : ControllerBase
     }
 
     [HttpGet]
+    [HasPermission(Permissions.ApartmentsRead)]
     public async Task<IActionResult> SearchApartments(
         DateOnly startDate, 
         DateOnly endDate,

@@ -3,6 +3,7 @@ using System;
 using Bookify.Infrastructure;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using Npgsql.EntityFrameworkCore.PostgreSQL.Metadata;
 
@@ -11,9 +12,11 @@ using Npgsql.EntityFrameworkCore.PostgreSQL.Metadata;
 namespace Bookify.Infrastructure.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    partial class ApplicationDbContextModelSnapshot : ModelSnapshot
+    [Migration("20240908000433_Refactor_Permissions")]
+    partial class Refactor_Permissions
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        /// <inheritdoc />
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -228,9 +231,6 @@ namespace Bookify.Infrastructure.Migrations
 
                     b.HasKey("RoleId", "PermissionId")
                         .HasName("pk_role_permissions");
-
-                    b.HasIndex("PermissionId")
-                        .HasDatabaseName("ix_role_permissions_permission_id");
 
                     b.ToTable("role_permissions", (string)null);
 
@@ -563,27 +563,6 @@ namespace Bookify.Infrastructure.Migrations
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired()
                         .HasConstraintName("fk_reviews_user_user_id");
-                });
-
-            modelBuilder.Entity("Bookify.Domain.Roles.Entity.RolePermission", b =>
-                {
-                    b.HasOne("Bookify.Domain.Permissions.Entity.Permission", "Permission")
-                        .WithMany()
-                        .HasForeignKey("PermissionId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired()
-                        .HasConstraintName("fk_role_permissions_permissions_permission_id");
-
-                    b.HasOne("Bookify.Domain.Roles.Entity.Role", "Role")
-                        .WithMany()
-                        .HasForeignKey("RoleId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired()
-                        .HasConstraintName("fk_role_permissions_roles_role_id");
-
-                    b.Navigation("Permission");
-
-                    b.Navigation("Role");
                 });
 
             modelBuilder.Entity("RoleUser", b =>

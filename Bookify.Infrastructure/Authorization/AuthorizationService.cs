@@ -2,6 +2,7 @@
 using Bookify.Domain.Users.Entity;
 using System.Linq;
 using System.Threading.Tasks;
+using Bookify.Domain.Roles.Entity;
 using Microsoft.EntityFrameworkCore;
 
 namespace Bookify.Infrastructure.Authorization;
@@ -31,16 +32,28 @@ internal sealed class AuthorizationService
 
     public async Task<HashSet<string>> GetPermissionsForUserAsync(string identityId)
     {
-        var permissions = await _dbContext
-            .Set<User>()
-            .Where(user => user.IdentityId == identityId)
-            .SelectMany(user => user.Roles.Select(role => role.Permissions))
-            .FirstAsync();
+        var userRolesResponse = await GetRolesForUserAsync(identityId);
 
-        var permissionsSet = permissions
-            .Select(p => p.Name)
-            .ToHashSet();
+        if (userRolesResponse is null || userRolesResponse.Roles.Count == 0)
+        {
+            return [];
+        }
 
-        return permissionsSet;
+        var result = new HashSet<string>();
+
+        foreach (var role in userRolesResponse.Roles)
+        {
+            var permissions = await _dbContext.Set<RolePermission>()
+                .Where(rp => rp.RoleId == role.Id)
+                .Select(rp => rp.Permission.Name)
+                .ToListAsync();
+
+            foreach (var permission in permissions)
+            {
+                result.Add(permission);
+            }
+        }
+
+        return result;
     }
 }
