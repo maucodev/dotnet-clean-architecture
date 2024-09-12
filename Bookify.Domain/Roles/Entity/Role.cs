@@ -1,4 +1,5 @@
 ﻿using System.Collections.Generic;
+using System.Text.Json.Serialization;
 using Bookify.Domain.Permissions.Entity;
 using Bookify.Domain.Users.Entity;
 
@@ -8,6 +9,7 @@ public sealed class Role
 {
     public static readonly Role Registered = new(1, "Registered");
 
+    [JsonConstructor]
     private Role(int id, string name)
     {
         Id = id;

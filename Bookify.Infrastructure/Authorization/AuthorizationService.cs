@@ -1,7 +1,9 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using Bookify.Domain.Users.Entity;
 using System.Linq;
 using System.Threading.Tasks;
+using Bookify.Application.Caching;
 using Bookify.Domain.Roles.Entity;
 using Microsoft.EntityFrameworkCore;
 
@@ -10,15 +12,25 @@ namespace Bookify.Infrastructure.Authorization;
 internal sealed class AuthorizationService
 {
     private readonly ApplicationDbContext _dbContext;
+    private readonly ICacheService _cacheService;
 
-    public AuthorizationService(ApplicationDbContext dbContext)
+    public AuthorizationService(ApplicationDbContext dbContext, ICacheService cacheService)
     {
         _dbContext = dbContext;
+        _cacheService = cacheService;
     }
 
     public async Task<UserRolesResponse> GetRolesForUserAsync(string identityId)
     {
-        var roles = await _dbContext.Set<User>()
+        var cacheKey = $"auth:get-roles-for-user:{identityId}";
+        var cachedData = await _cacheService.GetAsync<UserRolesResponse>(cacheKey);
+
+        if (cachedData is not null)
+        {
+            return cachedData;
+        }
+
+        var result = await _dbContext.Set<User>()
             .Where(u => u.IdentityId == identityId)
             .Select(u => new UserRolesResponse
             {
@@ -27,7 +39,9 @@ internal sealed class AuthorizationService
             })
             .FirstAsync();
 
-        return roles;
+        await _cacheService.SetAsync(cacheKey, result, TimeSpan.FromSeconds(30));
+
+        return result;
     }
 
     public async Task<HashSet<string>> GetPermissionsForUserAsync(string identityId)
@@ -37,6 +51,14 @@ internal sealed class AuthorizationService
         if (userRolesResponse is null || userRolesResponse.Roles.Count == 0)
         {
             return [];
+        }
+
+        var cacheKey = $"auth:get-permissions-for-user:{identityId}";
+        var cachedData = await _cacheService.GetAsync<HashSet<string>>(cacheKey);
+
+        if (cachedData is not null)
+        {
+            return cachedData;
         }
 
         var result = new HashSet<string>();
@@ -53,6 +75,8 @@ internal sealed class AuthorizationService
                 result.Add(permission);
             }
         }
+
+        await _cacheService.SetAsync(cacheKey, result, TimeSpan.FromSeconds(30));
 
         return result;
     }
