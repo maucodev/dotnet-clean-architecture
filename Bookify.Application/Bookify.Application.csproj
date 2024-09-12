@@ -18,6 +18,7 @@
 
 	<ItemGroup>
 		<Folder Include="Abstractions\Clock\" />
+		<Folder Include="Caching\" />
 		<Folder Include="Users\GetLoggedInUser\" />
 	</ItemGroup>
 
