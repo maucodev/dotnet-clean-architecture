@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Text.Json.Serialization;
 
 namespace Bookify.Domain.Abstractions;
 
@@ -44,6 +45,7 @@ public class Result<TValue> : Result
 {
     private readonly TValue _value;
 
+    [JsonConstructor]
     protected internal Result(TValue value, bool isSuccess, Error error) : base(isSuccess, error)
     {
         _value = value;
