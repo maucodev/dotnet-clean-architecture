@@ -1,4 +1,5 @@
 using Bookify.Api.Extensions;
+using Bookify.Api.OpenApi;
 using Bookify.Application;
 using Bookify.Infrastructure;
 using HealthChecks.UI.Client;
@@ -28,12 +29,26 @@ public static class Program
 
         builder.Services.AddInfrastructureLayer(builder.Configuration);
 
+        builder.Services.ConfigureOptions<ConfigureSwaggerOptions>();
+
         var app = builder.Build();
 
         if (app.Environment.IsDevelopment())
         {
             app.UseSwagger();
-            app.UseSwaggerUI();
+
+            app.UseSwaggerUI(options =>
+            {
+                app
+                    .DescribeApiVersions()
+                    .Select(description => new
+                    {
+                        Url = $"/swagger/{description.GroupName}/swagger.json",
+                        Name = description.GroupName.ToUpperInvariant()
+                    })
+                    .ToList()
+                    .ForEach(endpoint => options.SwaggerEndpoint(endpoint.Url, endpoint.Name));
+            });
 
             app.ApplyMigrations();
 
