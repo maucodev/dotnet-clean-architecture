@@ -12,7 +12,7 @@ using Serilog;
 
 namespace Bookify.Api;
 
-public static class Program
+public class Program
 {
     public static void Main(string[] args)
     {

@@ -8,13 +8,22 @@
 	</PropertyGroup>
 
 	<ItemGroup>
+	  <Content Include=".files\bookify-realm-export.json">
+	    <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+	  </Content>
+	</ItemGroup>
+
+	<ItemGroup>
 		<PackageReference Include="coverlet.collector" Version="6.0.2">
 		  <PrivateAssets>all</PrivateAssets>
 		  <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
 		</PackageReference>
 		<PackageReference Include="FluentAssertions" Version="6.12.1" />
+		<PackageReference Include="Microsoft.AspNetCore.Mvc.Testing" Version="8.0.8" />
 		<PackageReference Include="Microsoft.NET.Test.Sdk" Version="17.11.1" />
-		<PackageReference Include="NSubstitute" Version="5.1.0" />
+		<PackageReference Include="Testcontainers.Keycloak" Version="3.10.0" />
+		<PackageReference Include="Testcontainers.PostgreSql" Version="3.10.0" />
+		<PackageReference Include="Testcontainers.Redis" Version="3.10.0" />
 		<PackageReference Include="xunit" Version="2.9.0" />
 		<PackageReference Include="xunit.runner.visualstudio" Version="2.8.2">
 		  <PrivateAssets>all</PrivateAssets>
@@ -23,12 +32,17 @@
 	</ItemGroup>
 
 	<ItemGroup>
-	  <ProjectReference Include="..\Bookify.Application\Bookify.Application.csproj" />
-	  <ProjectReference Include="..\Bookify.Domain\Bookify.Domain.csproj" />
+		<Using Include="Xunit" />
 	</ItemGroup>
 
 	<ItemGroup>
-		<Using Include="Xunit" />
+	  <Folder Include="Infrastructure\" />
+	  <Folder Include="Apartments\" />
+	  <Folder Include="Bookins\" />
+	</ItemGroup>
+
+	<ItemGroup>
+	  <ProjectReference Include="..\Bookify.Api\Bookify.Api.csproj" />
 	</ItemGroup>
 
 </Project>
