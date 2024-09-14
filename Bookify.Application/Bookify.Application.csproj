@@ -22,4 +22,8 @@
 		<Folder Include="Users\GetLoggedInUser\" />
 	</ItemGroup>
 
+	<ItemGroup>
+		<InternalsVisibleTo Include="Bookify.Application.UnitTests" />
+	</ItemGroup>
+
 </Project>
