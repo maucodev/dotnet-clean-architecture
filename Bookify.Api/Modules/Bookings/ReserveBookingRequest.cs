@@ -1,4 +1,4 @@
-﻿namespace Bookify.Api.Controllers.Bookings;
+﻿namespace Bookify.Api.Modules.Bookings;
 
 public record ReserveBookingRequest(
     Guid ApartmentId,
