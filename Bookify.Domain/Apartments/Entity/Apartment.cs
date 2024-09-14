@@ -11,7 +11,7 @@ public sealed class Apartment : Abstractions.Entity
     {
     }
 
-    private Apartment(
+    public Apartment(
         Guid id,
         Name name,
         Description description,
