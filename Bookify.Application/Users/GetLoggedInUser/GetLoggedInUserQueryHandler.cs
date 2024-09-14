@@ -42,6 +42,6 @@ internal sealed class GetLoggedInUserQueryHandler : IQueryHandler<GetLoggedInUse
                 _userContext.IdentityId
             });
 
-        return user;
+        return Result.Success(user);
     }
 }
