@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Linq;
 
 namespace Bookify.Domain.Abstractions;
 
@@ -20,7 +21,7 @@ public abstract class Entity
 
     public IReadOnlyList<IDomainEvent> GetDomainEvents()
     {
-        return _domainEvents;
+        return _domainEvents.ToList();
     }
 
     public void ClearDomainEvents()
